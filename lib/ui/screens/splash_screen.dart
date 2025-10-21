@@ -1,5 +1,6 @@
 import 'package:aklon/ui/screens/sign_in_screen.dart';
 import 'package:aklon/ui/utils/asset_path.dart';
+import 'package:aklon/ui/widgets/background_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,7 +12,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   // Go to next Screen function are here
   Future<void> _moveToNextScreen() async {
     await Future.delayed(Duration(seconds: 3));
@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _moveToNextScreen();
   }
@@ -32,19 +32,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          SvgPicture.asset(
-            AssetsPath.backgroundSvg,
-            fit: BoxFit.cover,
-            height: double.maxFinite,
-            width: double.maxFinite,
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: SvgPicture.asset(AssetsPath.logoSvg, fit: BoxFit.cover),
-          ),
-        ],
+      body: BackgroundScreen(
+        child: Align(
+          alignment: Alignment.center,
+          child: SvgPicture.asset(AssetsPath.logoSvg, fit: BoxFit.cover),
+        ),
       ),
     );
   }
