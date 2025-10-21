@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
-
+  static const String name = '/sign-in';
   @override
   State<SignInScreen> createState() => _SingInScreenState();
 }
@@ -41,15 +41,6 @@ class _SingInScreenState extends State<SignInScreen> {
                     controller: _emailTEController,
                     textInputAction: TextInputAction.next,
                     decoration: InputDecoration(hintText: 'Email'),
-
-                    // Normal Validation are here
-                    // validator: (String? value) {
-                    //   if (value?.isEmpty ?? true) {
-                    //     return 'Enter a valid Email';
-                    //   }
-                    //   return null;
-                    // },
-
                     // Using Package For Validation Email Field
                     validator: (String?value){
                       String email = value ?? '';

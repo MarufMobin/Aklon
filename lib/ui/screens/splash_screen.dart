@@ -7,6 +7,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
+  static const String name = '/';
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -17,10 +19,13 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 3));
 
     // This Navigator name Imperative Navigator or Navigator 1
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => SignInScreen()),
-    );
+    // Navigator.pushReplacement(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => SignInScreen()),
+    // );
+
+    // Declaretive Navigation Or Named Route
+    Navigator.pushReplacementNamed(context, SignInScreen.name);
   }
 
   @override

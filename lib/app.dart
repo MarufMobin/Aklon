@@ -1,3 +1,4 @@
+import 'package:aklon/ui/screens/sign_in_screen.dart';
 import 'package:aklon/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +54,18 @@ class MyApp extends StatelessWidget {
         // Text Button related work are end here
       ),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      // home: SplashScreen(),
+
+        initialRoute: '/',
+      // Declaretive Route
+      // routes: {
+      //   '/' : (context) => SplashScreen(),
+      //   '/sign-in' : (context) => SignInScreen(),
+      // }
+      routes: {
+        SplashScreen.name : (context) => SplashScreen(),
+        SignInScreen.name : (context) => SignInScreen(),
+      }
     );
   }
 }
