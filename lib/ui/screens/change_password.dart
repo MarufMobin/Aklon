@@ -1,22 +1,21 @@
 import 'package:aklon/ui/screens/forgot_password_email_screen.dart';
 import 'package:aklon/ui/screens/sign_up_screen.dart';
 import 'package:aklon/ui/widgets/background_screen.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
-  static const String name = '/sign-in';
+class ChangePassword extends StatefulWidget {
+  const ChangePassword({super.key});
+  static const String name = '/change-password';
   @override
-  State<SignInScreen> createState() => _SingInScreenState();
+  State<ChangePassword> createState() => _SingInScreenState();
 }
 
-class _SingInScreenState extends State<SignInScreen> {
+class _SingInScreenState extends State<ChangePassword> {
 
   // Text Editing Controller are write here
-  final TextEditingController _emailTEController = TextEditingController();
   final TextEditingController _passwordTEController = TextEditingController();
+  final TextEditingController _confirmTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -35,25 +34,20 @@ class _SingInScreenState extends State<SignInScreen> {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Gets Started With',
+                      'Set Your Password',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
-                  SizedBox(height: 24),
-                  TextFormField(
-                    controller: _emailTEController,
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(hintText: 'Email'),
-                    // Using Package For Validation Email Field
-                    validator: (String?value){
-                      String email = value ?? '';
-                      if( EmailValidator.validate(email) == false ){
-                        return 'Enter a valid email';
-                      }
-                      return null;
-                    }
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Password Should be more then 6 letter',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: Colors.grey
+                      ),
+                    ),
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(height: 24),
                   TextFormField(
                     validator: (String? value) {
                       if ( (value?.length ?? 0) <= 6 ) {
@@ -64,6 +58,18 @@ class _SingInScreenState extends State<SignInScreen> {
                     controller: _passwordTEController,
                     obscureText: true,
                     decoration: InputDecoration(hintText: 'Password'),
+                  ),
+                  SizedBox(height: 16),
+                  TextFormField(
+                    validator: (String? value) {
+                      if ( (value ?? '') != _passwordTEController.text ) {
+                        return 'Confirm Password Does Not Match';
+                      }
+                      return null;
+                    },
+                    controller: _confirmTEController,
+                    obscureText: true,
+                    decoration: InputDecoration(hintText: 'Confirm Password'),
                   ),
                   SizedBox(height: 16),
 
@@ -126,8 +132,8 @@ class _SingInScreenState extends State<SignInScreen> {
 
   @override
   void dispose() {
-    _emailTEController.dispose();
     _passwordTEController.dispose();
+    _confirmTEController.dispose();
     super.dispose();
   }
 }

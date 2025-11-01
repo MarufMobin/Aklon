@@ -1,3 +1,6 @@
+import 'package:aklon/ui/screens/change_password.dart';
+import 'package:aklon/ui/screens/forgot_password_email_screen.dart';
+import 'package:aklon/ui/screens/pin_varification_screen.dart';
 import 'package:aklon/ui/screens/sign_in_screen.dart';
 import 'package:aklon/ui/screens/sign_up_screen.dart';
 import 'package:aklon/ui/screens/splash_screen.dart';
@@ -55,20 +58,24 @@ class MyApp extends StatelessWidget {
         // Text Button related work are end here
       ),
       debugShowCheckedModeBanner: false,
-      // home: SplashScreen(),
 
-        initialRoute: '/',
+      // home: SplashScreen(),
+      initialRoute: '/',
+
       // Declaretive Route
       // routes: {
       //   '/' : (context) => SplashScreen(),
       //   '/sign-in' : (context) => SignInScreen(),
       // }
-
       routes: {
-        SplashScreen.name : (context) => SplashScreen(),
-        SignInScreen.name : (context) => SignInScreen(),
-        SignUpScreen.name : (context) => SignUpScreen(),
-      }
+        SplashScreen.name: (context) => SplashScreen(),
+        SignInScreen.name: (context) => SignInScreen(),
+        SignUpScreen.name: (context) => SignUpScreen(),
+        ForgotPasswordEmailScreen.name: (context) =>
+            ForgotPasswordEmailScreen(),
+        PinVarificationScreen.name: (context) => PinVarificationScreen(),
+        ChangePassword.name: (context) => ChangePassword(),
+      },
     );
   }
 }
