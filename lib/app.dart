@@ -1,4 +1,5 @@
 import 'package:aklon/ui/screens/sign_in_screen.dart';
+import 'package:aklon/ui/screens/sign_up_screen.dart';
 import 'package:aklon/ui/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -62,9 +63,11 @@ class MyApp extends StatelessWidget {
       //   '/' : (context) => SplashScreen(),
       //   '/sign-in' : (context) => SignInScreen(),
       // }
+
       routes: {
         SplashScreen.name : (context) => SplashScreen(),
         SignInScreen.name : (context) => SignInScreen(),
+        SignUpScreen.name : (context) => SignUpScreen(),
       }
     );
   }

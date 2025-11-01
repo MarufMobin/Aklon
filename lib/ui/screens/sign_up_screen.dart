@@ -1,18 +1,16 @@
-import 'package:aklon/ui/screens/sign_up_screen.dart';
 import 'package:aklon/ui/widgets/background_screen.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
-  static const String name = '/sign-in';
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+  static const String name = '/sign-up';
   @override
-  State<SignInScreen> createState() => _SingInScreenState();
+  State<SignUpScreen> createState() => _SingInScreenState();
 }
 
-class _SingInScreenState extends State<SignInScreen> {
-
+class _SingInScreenState extends State<SignUpScreen> {
   // Text Editing Controller are write here
   final TextEditingController _emailTEController = TextEditingController();
   final TextEditingController _passwordTEController = TextEditingController();
@@ -34,35 +32,47 @@ class _SingInScreenState extends State<SignInScreen> {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      'Gets Started With',
+                      'Join With Us',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
-                  SizedBox(height: 24),
-                  TextFormField(
-                    controller: _emailTEController,
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(hintText: 'Email'),
-                    // Using Package For Validation Email Field
-                    validator: (String?value){
-                      String email = value ?? '';
-                      if( EmailValidator.validate(email) == false ){
-                        return 'Enter a valid email';
-                      }
-                      return null;
-                    }
-                  ),
+
                   SizedBox(height: 8),
                   TextFormField(
                     validator: (String? value) {
-                      if ( (value?.length ?? 0) <= 6 ) {
-                        return 'Please Enter a valid password';
+                      if( value?.trim().isEmpty ?? true ){
+                        return 'Please Enter your First Name';
                       }
                       return null;
                     },
                     controller: _passwordTEController,
                     obscureText: true,
-                    decoration: InputDecoration(hintText: 'Password'),
+                    decoration: InputDecoration(hintText: 'First Name'),
+                  ),
+                  SizedBox(height: 8),
+                  TextFormField(
+                    validator: (String? value) {
+                      if( value?.trim().isEmpty ?? true ){
+                        return 'Please Enter your Last Name';
+                      }
+                      return null;
+                    },
+                    controller: _passwordTEController,
+                    obscureText: true,
+                    decoration: InputDecoration(hintText: 'Last Name'),
+                  ),
+                  SizedBox(height: 8),
+                  TextFormField(
+
+                    validator: (String? value) {
+                      if( value?.trim().isEmpty ?? true ){
+                        return 'Please Enter your valid mobile number';
+                      }
+                      return null;
+                    },
+                    controller: _passwordTEController,
+                    keyboardType: TextInputType.phone,
+                    decoration: InputDecoration(hintText: 'Phone'),
                   ),
                   SizedBox(height: 16),
 
@@ -95,7 +105,7 @@ class _SingInScreenState extends State<SignInScreen> {
                             color: Colors.green,
                           ),
                           recognizer: TapGestureRecognizer()
-                            ..onTap = _onTapSignUpButton,
+                            ..onTap = _onTapSignIndButton,
                         ),
                       ],
                     ),
@@ -120,7 +130,7 @@ class _SingInScreenState extends State<SignInScreen> {
   }
 
   void _onTapSignUpButton() {
-    Navigator.pushReplacementNamed(context,SignUpScreen.name);
+    // TODO: Sing Up With Api
   }
 
   @override
